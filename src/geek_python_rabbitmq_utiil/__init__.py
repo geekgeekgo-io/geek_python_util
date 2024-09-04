@@ -1,1 +1,1 @@
-from .publish_topic_message import RabbitMqUtil
+from .rabbitmq_util import RabbitMqUtil
