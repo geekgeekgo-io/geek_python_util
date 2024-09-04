@@ -1,1 +1,0 @@
-from .chinese_convert import ChineseConvert

@@ -1,7 +1,7 @@
 import pika
 
 class RabbitMqUtil:
-    def publish_topic_messsage(self, hostname, username, password, port, queue_name, message):
+    def publish_topic_messsage(self, hostname: str, username: str, password: str, port: int, queue_name: str, message: str):
         credentials = pika.PlainCredentials(username, password)
         connection = pika.BlockingConnection(
             pika.ConnectionParameters(hostname, port=port, credentials=credentials))
