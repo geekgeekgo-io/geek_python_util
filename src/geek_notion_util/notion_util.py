@@ -1,28 +1,35 @@
 import pika
+import json
+import requests
 
 class NotionUtil:
 
-    def query_notion_database():
+    def query_notion_database(application_name: str, crew: str, notion_api: str, database_id: str, notion_api_key: str):
+        headers = {
+            "Authorization": f"Bearer " + notion_api_key,
+            "Content-Type": "application/json",
+            "Notion-Version": "2022-06-28"
+        }
         filter_data = {
             "filter": {
                 "and": [
                     {
                         "property": "app",  # Replace with your first field name
                         "rich_text": {
-                            "equals": "geekgeekgo_idea"  # Replace with the value to match
+                            "equals": application_name  # Replace with the value to match
                         }
                     },
                     {
                         "property": "crew",  # Replace with your second field name
                         "rich_text": {
-                            "equals": "researcher"  # Replace with the value to match
+                            "equals": crew  # Replace with the value to match
                         }
                     }
                 ]
             }
 
         }
-        response = requests.post(NOTION_API_URL, headers=headers, json=filter_data)
+        response = requests.post(notion_api, headers=headers, json=filter_data)
         if response.status_code == 200:
             return response.json()
         else:
