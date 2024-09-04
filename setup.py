@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='geek_python_util',
-    version='1.0.0',
+    version='1.0.1',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     description='A reusable geek util for Python applications',
