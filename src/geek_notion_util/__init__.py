@@ -1,1 +1,1 @@
-from .logger_util import LoggerUtil
+from .notion_util import NotionUtil
