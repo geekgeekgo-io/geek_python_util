@@ -2,7 +2,8 @@
 import json
 import os
 import requests
-
+from geek_common_util import CommonUtil
+c = CommonUtil()
 class OllamaAPI:
     def __init__(self, base_url="http://localhost:11434"):
         self.base_url = base_url
@@ -88,8 +89,6 @@ class OllamaAPI:
             with open(filename, 'w') as f:
                 json.dump(self.context, f)
             print(f"Context exported to {filename}.")
-        else:
-            print("No context to export.")
 
     def import_context(self, filename):
         """
@@ -116,12 +115,12 @@ class OllamaUtil:
 
     def generate(self, ollama_api_url, model: str, prompt: str, folder: str):
         ollama = OllamaAPI(base_url=ollama_api_url)
-        ollama_context_file = folder + "context.json"
-        if self.is_file_exist(ollama_context_file):
-            ollama.import_context(ollama_context_file)
-        else:
-            ollama.clear_context()
+        #ollama_context_file = folder + "context.json"
+        #if self.is_file_exist(ollama_context_file):
+        #    ollama.import_context(ollama_context_file)
+        #else:
+        ollama.clear_context()
         response = ollama.generate(model, prompt)
-        ollama.export_context(ollama_context_file)
+        # ollama.export_context(ollama_context_file)
 
         return response
