@@ -122,5 +122,6 @@ class OllamaUtil:
         else:
             ollama.clear_context()
         response = ollama.generate(model, prompt)
+        ollama.export_context(ollama_context_file)
 
         return response
