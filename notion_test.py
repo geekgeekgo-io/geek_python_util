@@ -4,7 +4,6 @@ RSS_DATABASE_ID = "d704dce624d3451697d9caf6654176ea"
 def main():
     try:
         n = NotionUtil()
-
         results = n.query_crew_notion("geekgeekgo_news",
                                           "news_topic_creator",
                                           CREW_DATABASE_ID,
@@ -22,10 +21,8 @@ def main():
 
     try:
         n = NotionUtil()
-
         results = n.get_all_notion(RSS_DATABASE_ID,"secret_Ylpf318nOypDkeizTxvaqMHkZwEVhW19gqsaAAP68CZ")
         processed_data = n.process_database_results(results)
-
         # Print processed data
         for item in processed_data:
             print(item)
