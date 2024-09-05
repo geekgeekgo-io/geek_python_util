@@ -4,7 +4,7 @@ import requests
 
 class NotionUtil:
 
-    def query_notion_database(self, application_name: str, crew: str, database_id: str, notion_api_key: str):
+    def query_crew_notion(self, application_name: str, crew: str, database_id: str, notion_api_key: str):
         headers = {
             "Authorization": f"Bearer {notion_api_key}",
             "Content-Type": "application/json",
@@ -35,6 +35,22 @@ class NotionUtil:
             return response.json()
         else:
             raise Exception(f"Error querying database: {response.status_code} {response.text}")
+
+    def get_all_notion(self, database_id: str, notion_api_key: str):
+        headers = {
+            "Authorization": f"Bearer {notion_api_key}",
+            "Content-Type": "application/json",
+            "Notion-Version": "2022-06-28"
+        }
+        filter_data = {
+        }
+        notion_api_url = f"https://api.notion.com/v1/databases/{database_id}/query"
+        response = requests.post(notion_api_url, headers=headers, json=filter_data)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            raise Exception(f"Error querying database: {response.status_code} {response.text}")
+
 
     def process_database_results(self, results):
         processed_data = []
