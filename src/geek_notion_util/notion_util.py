@@ -4,7 +4,7 @@ import requests
 
 class NotionUtil:
 
-    def query_notion_database(application_name: str, crew: str, notion_api: str, database_id: str, notion_api_key: str):
+    def query_notion_database(self, application_name: str, crew: str, notion_api: str, database_id: str, notion_api_key: str):
         headers = {
             "Authorization": f"Bearer " + notion_api_key,
             "Content-Type": "application/json",
@@ -35,7 +35,7 @@ class NotionUtil:
         else:
             raise Exception(f"Error querying database: {response.status_code} {response.text}")
 
-    def process_database_results(results):
+    def process_database_results(self, results):
         processed_data = []
         for page in results["results"]:
             item = {}

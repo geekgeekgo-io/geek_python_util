@@ -16,7 +16,7 @@ class CustomJsonFormatter(logging.Formatter):
         }
 
         # Add custom fields
-        log_object["custom_field"] = getattr(record, 'custom_field', 'default_custom_value')
+        #log_object["custom_field"] = getattr(record, 'custom_field', 'default_custom_value')
 
         # Include exception info if present
         if record.exc_info:
