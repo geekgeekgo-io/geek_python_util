@@ -1,6 +1,16 @@
 import pika
 
 class RabbitMqUtil:
+
+    def create_telegram_json(self, chat_id, message, base64, chat_group):
+        data = {
+            "chat_id": chat_id,
+            "message": message,
+            "base64": base64,
+            "chat_group": chat_group
+        }
+        return data
+
     def publish_topic_messsage(self, hostname: str, username: str, password: str, port: int, queue_name: str, message: str):
         credentials = pika.PlainCredentials(username, password)
         connection = pika.BlockingConnection(
