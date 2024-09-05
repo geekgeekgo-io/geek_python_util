@@ -115,12 +115,12 @@ class OllamaUtil:
 
     def generate(self, ollama_api_url, model: str, prompt: str, folder: str):
         ollama = OllamaAPI(base_url=ollama_api_url)
-        #ollama_context_file = folder + "context.json"
-        #if self.is_file_exist(ollama_context_file):
-        #    ollama.import_context(ollama_context_file)
-        #else:
-        ollama.clear_context()
+        ollama_context_file = folder + "context.json"
+        if self.is_file_exist(ollama_context_file):
+            ollama.import_context(ollama_context_file)
+        else:
+            ollama.clear_context()
         response = ollama.generate(model, prompt)
-        # ollama.export_context(ollama_context_file)
+        ollama.export_context(ollama_context_file)
 
         return response
