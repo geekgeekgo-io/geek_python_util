@@ -1,15 +1,30 @@
 import pika
 
+
+class Telegram:
+    # Constructor to initialize the object
+    def __init__(self, chat_id, message, base64, chat_group):
+        self.chat_id = chat_id
+        self.message = message
+        self.base64 = base64
+        self.chat_group = chat_group
+
+
+    # Method to display dog information
+    def to_dict(self):
+        return {
+            "chat_id": self.chat_id,
+            "message": self.message,
+            'base64': self.base64,
+            'chat_group': self.chat_group
+        }
+
 class RabbitMqUtil:
 
     def create_telegram_json(self, chat_id, message, base64, chat_group):
-        data = {
-            "chat_id": chat_id,
-            "message": message,
-            "base64": base64,
-            "chat_group": chat_group
-        }
-        return data
+        t = Telegram(chat_id, message, base64, chat_group)
+        t_json = t.to_dict()
+        return str(t_json).replace("'", '"')
 
     def publish_topic_messsage(self, hostname: str, username: str, password: str, port: int, queue_name: str, message: str):
         credentials = pika.PlainCredentials(username, password)
