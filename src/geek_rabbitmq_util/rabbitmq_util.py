@@ -21,8 +21,8 @@ class Telegram:
 
 class RabbitMqUtil:
 
-    def create_telegram_json(self, chat_id, message, base64, chat_group):
-        t = Telegram(chat_id, message, base64, chat_group)
+    def create_telegram_json(self, chat_id: str, message: str, base64: str, chat_group: str):
+        t = Telegram(chat_id, message.replace('"', "'"), base64, chat_group)
         t_json = t.to_dict()
         return str(t_json).replace("'", '"')
 
