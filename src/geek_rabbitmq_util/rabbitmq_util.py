@@ -37,7 +37,7 @@ class RabbitMqUtil:
         channel.queue_declare(queue=queue_name)
 
         # Publish the message
-        channel.basic_publish(exchange='',
+        channel.basic_publish(exchange='geek',
                               routing_key=routing_key,
                               body=message)
         print(f" [x] Sent '{message}'")
