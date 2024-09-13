@@ -61,8 +61,8 @@ class NotionUtil:
             # Process each property (adjust according to your database structure)
             for prop_name, prop_data in properties.items():
                 prop_type = prop_data["type"]
-                if prop_type == "title":
-                    item[prop_name] = prop_data["title"][0]["plain_text"] if prop_data["title"] else ""
+                if prop_type == "headline":
+                    item[prop_name] = prop_data["headline"][0]["plain_text"] if prop_data["headline"] else ""
                 elif prop_type == "rich_text":
                     item[prop_name] = prop_data["rich_text"][0]["plain_text"] if prop_data["rich_text"] else ""
                 elif prop_type == "number":
