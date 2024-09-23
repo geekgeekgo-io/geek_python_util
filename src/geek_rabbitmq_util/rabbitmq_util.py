@@ -3,8 +3,8 @@ import pika
 
 class Telegram:
     # Constructor to initialize the object
-    def __init__(self, chat_id, message, base64, chat_group):
-        self.chat_id = chat_id
+    def __init__(self, chat_ids, message, base64, chat_group):
+        self.chat_ids = chat_ids
         self.message = message
         self.base64 = base64
         self.chat_group = chat_group
@@ -13,7 +13,7 @@ class Telegram:
     # Method to display dog information
     def to_dict(self):
         return {
-            "chat_id": self.chat_id,
+            "chat_ids": self.chat_ids,
             "message": self.message,
             'base64': self.base64,
             'chat_group': self.chat_group
@@ -21,8 +21,8 @@ class Telegram:
 
 class RabbitMqUtil:
 
-    def create_telegram_json(self, chat_id: str, message: str, base64: str, chat_group: str):
-        t = Telegram(chat_id, message.replace('"', "'"), base64, chat_group)
+    def create_telegram_json(self, chat_ids: list[str], message: str, base64: str, chat_group: str):
+        t = Telegram(chat_ids, message.replace('"', "'"), base64, chat_group)
         t_json = t.to_dict()
         return str(t_json).replace("'", '"')
 
