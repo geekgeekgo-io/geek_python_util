@@ -8,7 +8,7 @@ class ImageMediaTools ():
         with open(font_path, "rb") as font_file:
             return base64.b64encode(font_file.read()).decode('utf-8')
 
-    def image_to_base64(png_file_path):
+    def image_to_base64(self, png_file_path):
         with open(png_file_path, 'rb') as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
         return encoded_string
