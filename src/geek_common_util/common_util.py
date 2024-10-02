@@ -7,3 +7,7 @@ class CommonUtil():
         else:
             return False
 
+    def write_to_text_file(self, string_write, text_file_path):
+        with open(text_file_path, 'w') as text_file:
+            text_file.write(string_write)
+

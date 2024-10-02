@@ -7,6 +7,13 @@ class ImageMediaTools ():
     def font_to_base64(self, font_path):
         with open(font_path, "rb") as font_file:
             return base64.b64encode(font_file.read()).decode('utf-8')
+
+    def image_to_base64(png_file_path):
+        with open(png_file_path, 'rb') as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+        return encoded_string
+
+
     def calculate_font_size(self, text, max_width, max_height):
         font_size = 100
         wrapped_text = textwrap.wrap(text, width=30)
